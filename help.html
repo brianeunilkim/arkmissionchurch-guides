@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>방주 OneDrive 도움말</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: one calm column of numbered step cards, each step = big number + Korean instruction + English line + a small drawing of the screen */
+:root {
+  --bg: #eef3f6;
+  --paper: #ffffff;
+  --ink: #142433;
+  --muted: #566a7b;
+  --line: #d3dee6;
+  --accent: #0b6e7f;      /* deep teal, the "ark" water */
+  --accent-soft: #dcefF2;
+  --gold: #b7791f;        /* used only for warnings */
+  --gold-soft: #fbf0dc;
+  --ok: #2f7d4f;
+  --ok-soft: #e1f2e7;
+  --no: #b3402e;
+  --no-soft: #f8e3df;
+  --screen: #f7f9fb;
+  --ms-blue: #1f5fbf;
+  --display: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a22; --paper: #16242f; --ink: #e6eef3; --muted: #9fb2c0; --line: #2a3c49;
+    --accent: #4fb6c6; --accent-soft: #173640; --gold: #e0a64a; --gold-soft: #3a2e17;
+    --ok: #6cc28d; --ok-soft: #173325; --no: #e8836f; --no-soft: #3d201b; --screen: #1c2d39; --ms-blue: #6fa3f0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a22; --paper: #16242f; --ink: #e6eef3; --muted: #9fb2c0; --line: #2a3c49;
+  --accent: #4fb6c6; --accent-soft: #173640; --gold: #e0a64a; --gold-soft: #3a2e17;
+  --ok: #6cc28d; --ok-soft: #173325; --no: #e8836f; --no-soft: #3d201b; --screen: #1c2d39; --ms-blue: #6fa3f0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.6; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 28px; }
+.wrap > * { min-width: 0; }
+header > * { min-width: 0; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.25; }
+.en { color: var(--muted); font-size: .86em; display: block; }
+p { margin: 0; }
+
+/* Header */
+header { display: grid; gap: 14px; padding-block: 8px; }
+.eyebrow { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+header h1 { font-size: clamp(30px, 6vw, 44px); }
+header h1 .en { font-size: .55em; margin-top: 4px; font-weight: 500; }
+.lead { max-width: 62ch; }
+.needs { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { max-width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 6px 14px; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; }
+.chip b { color: var(--accent); flex: none; }
+
+/* Step overview */
+nav.map { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+nav.map ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+nav.map a { display: grid; gap: 2px; text-decoration: none; color: var(--ink); padding: 10px 12px; border-radius: 10px; background: var(--bg); min-height: 100%; }
+nav.map a:hover, nav.map a:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
+nav.map .n { font-family: var(--display); color: var(--accent); font-weight: 700; font-size: 14px; }
+nav.map .t { font-weight: 700; font-size: 16px; line-height: 1.3; }
+nav.map .t .en { font-weight: 400; font-size: 13px; }
+nav.map li.done a { background: var(--ok-soft); }
+nav.map li.done .n::after { content: " ✓"; color: var(--ok); }
+
+/* Step section */
+section.step { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 24px 20px; display: grid; gap: 20px; scroll-margin-top: 16px; }
+.step-head { display: flex; gap: 16px; align-items: flex-start; }
+.bignum { flex: none; width: 56px; height: 56px; border-radius: 16px; background: var(--accent); color: var(--paper); font-family: var(--display); font-weight: 700; font-size: 28px; display: grid; place-items: center; }
+.step-head h2 { font-size: 26px; }
+.step-head h2 .en { font-size: .62em; font-weight: 500; margin-top: 2px; }
+.step-head .meta { font-size: 15px; color: var(--muted); margin-top: 6px; }
+.step-head > div { min-width: 0; }
+
+.sub { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: 20px; align-items: center; padding-top: 18px; border-top: 1px dashed var(--line); }
+.sub:first-of-type { border-top: 0; padding-top: 0; }
+.sub.no-fig { grid-template-columns: 1fr; }
+.sub .text { display: grid; gap: 6px; min-width: 0; }
+.sub .k { font-weight: 500; font-size: 19px; }
+.sub .k strong { color: var(--accent); }
+.sub .no { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--accent); }
+@media (max-width: 640px) { .sub { grid-template-columns: 1fr; } }
+
+.note { border-radius: 12px; padding: 12px 16px; font-size: 16px; background: var(--accent-soft); }
+.note.warn { background: var(--gold-soft); }
+.note b { font-family: var(--display); }
+
+.done-toggle { justify-self: start; display: inline-flex; gap: 10px; align-items: center; font-size: 16px; font-weight: 500; cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; background: var(--bg); color: var(--ink); font-family: var(--body); }
+.done-toggle input { width: 20px; height: 20px; accent-color: var(--ok); margin: 0; }
+.done-toggle:has(input:checked) { background: var(--ok-soft); border-color: var(--ok); }
+
+/* Screen drawings */
+.fig { background: var(--screen); border: 1px solid var(--line); border-radius: 14px; padding: 14px; font-size: 14px; line-height: 1.4; display: grid; gap: 8px; max-width: 100%; }
+.fig .bar { display: flex; gap: 6px; }
+.fig .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.fig .box { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.fig .btn { background: var(--ms-blue); color: #fff; border-radius: 6px; padding: 6px 12px; justify-self: end; font-weight: 700; }
+.fig .hl { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.fig .cap { font-size: 12px; color: var(--muted); text-align: center; }
+.fig .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.fig .pill { border: 1px solid var(--line); background: var(--paper); border-radius: 6px; padding: 4px 8px; }
+.phone { width: 150px; justify-self: center; border: 3px solid var(--ink); border-radius: 22px; padding: 14px 10px; background: var(--paper); display: grid; gap: 8px; text-align: center; }
+.qr { width: 72px; height: 72px; justify-self: center; background:
+  conic-gradient(var(--ink) 25%, transparent 0 50%, var(--ink) 0 75%, transparent 0) 0 0/18px 18px; border: 6px solid var(--paper); outline: 2px solid var(--ink); }
+.bignumber { font-family: var(--display); font-size: 34px; font-weight: 700; letter-spacing: .1em; color: var(--ink); }
+.menu { display: grid; gap: 2px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 6px; box-shadow: 0 4px 12px rgb(0 0 0 / .08); }
+.menu span { padding: 4px 8px; border-radius: 4px; }
+.tree { display: grid; gap: 3px; }
+.tree span { padding: 3px 6px; }
+.tree .in { padding-left: 22px; }
+.tabbar { display: flex; justify-content: space-around; border-top: 1px solid var(--line); padding-top: 6px; font-size: 11px; }
+
+/* Rules */
+.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) { .rules { grid-template-columns: 1fr; } }
+.rules ul { list-style: none; margin: 0; padding: 16px; border-radius: 14px; display: grid; gap: 12px; }
+.rules .do { background: var(--ok-soft); }
+.rules .dont { background: var(--no-soft); }
+.rules h3 { font-size: 18px; }
+.rules .do h3 { color: var(--ok); }
+.rules .dont h3 { color: var(--no); }
+.rules li { font-size: 17px; }
+
+/* Help table */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--display); font-size: 14px; color: var(--muted); letter-spacing: .04em; }
+.contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--accent-soft); border-radius: 14px; padding: 14px 16px; }
+.contact code { font-family: var(--body); font-weight: 700; user-select: all; }
+.contact button { font: inherit; font-size: 14px; border: 1px solid var(--accent); color: var(--accent); background: var(--paper); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+
+footer { font-size: 14px; color: var(--muted); text-align: center; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+@media print {
+  body { background: #fff; font-size: 15px; }
+  nav.map, .done-toggle, .contact button { display: none; }
+  section.step { break-inside: avoid-page; border-color: #ccc; }
+  .wrap { gap: 18px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<style>.contact{margin-top:4px}</style>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">방주선교교회 · Ark Mission Church</div>
+    <h1>OneDrive 도움말<span class="en">OneDrive help topics</span></h1>
+    <p class="lead">필요할 때 해당 항목만 보세요. 처음 설정은 <a href="index.html">OneDrive 시작하기</a>에 있습니다.<span class="en">Read only the topic you need. First-time setup is in Getting started with OneDrive.</span></p>
+  </header>
+
+  <nav class="map" aria-label="항목 / Topics">
+    <ol>
+      <li><a href="#trouble"><span class="n">문제 해결</span><span class="t">로그인·폴더 문제<span class="en">Troubleshooting</span></span></a></li>
+      <li><a href="#create"><span class="n">편집자용</span><span class="t">새 문서·폴더<span class="en">New files &amp; folders</span></span></a></li>
+      <li><a href="#phone"><span class="n">휴대폰</span><span class="t">사진·스캔 올리기<span class="en">Upload &amp; scan</span></span></a></li>
+      <li><a href="#restore"><span class="n">되돌리기</span><span class="t">이전 버전·지운 파일<span class="en">Undo &amp; restore</span></span></a></li>
+      <li><a href="#mac"><span class="n">Mac</span><span class="t">Mac에서 설정<span class="en">Set up on a Mac</span></span></a></li>
+      <li><a href="#personal"><span class="n">PC</span><span class="t">개인 OneDrive와 함께<span class="en">With a personal OneDrive</span></span></a></li>
+      <li><a href="#icons"><span class="n">PC</span><span class="t">아이콘 의미<span class="en">What the icons mean</span></span></a></li>
+    </ol>
+  </nav>
+
+  <section class="step" id="trouble">
+    <div class="step-head"><div class="bignum">?</div><div><h2>문제 해결<span class="en">Troubleshooting</span></h2></div></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>상황 · Problem</th><th>해결 · What to do</th></tr></thead>
+        <tbody>
+          <tr><td>암호를 잊음<span class="en">Forgot password</span></td><td>IT 담당자에게 연락하시면 재설정해 드립니다.<span class="en">Contact the church IT admin to reset it.</span></td></tr>
+          <tr><td>폴더가 안 보임<span class="en">Folders are missing</span></td><td>시작하기 2단계(바로 가기 추가)를 했는지 확인. PC는 OneDrive 앱에 로그인했는지 확인.<span class="en">Check you did Step 2 (Add shortcut). On a PC, check you're signed in to the OneDrive app.</span></td></tr>
+          <tr><td>파일을 고칠 수 없음<span class="en">Can't edit a file</span></td><td>담당 폴더가 아니면 보기만 됩니다. 정상입니다. 필요하면 담당 개발원장께 요청.<span class="en">Outside your own folders you can only view. That's expected; ask that folder's 개발원장 if needed.</span></td></tr>
+          <tr><td>예산위원회·당회 폴더가 없음<span class="en">No 예산위원회 or 당회 folder</span></td><td>해당 위원이 아니면 보이지 않습니다. 정상입니다.<span class="en">Only members see these. That's expected.</span></td></tr>
+          <tr><td>휴대폰을 바꿈<span class="en">New phone</span></td><td>IT 담당자에게 연락해서 Authenticator 다시 등록.<span class="en">Contact the church IT admin to re-register Authenticator.</span></td></tr>
+          <tr><td>내가 하지 않은 숫자 요청<span class="en">A sign-in number request you didn't start</span></td><td><b>거부</b>를 누르고 IT 담당자에게 알려주세요.<span class="en">Tap Deny and tell the church IT admin.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="step" id="create">
+    <div class="step-head"><div class="bignum">+</div><div><h2>새 문서·폴더 만들기<span class="en">Create new files and folders</span></h2><p class="meta">담당 폴더가 있는 분만 · Only for folders you're in charge of</p></div></div>
+    <div class="sub">
+      <div class="text">
+        <p class="k"><strong>새 문서:</strong> office.com → OneDrive → <strong>내 파일</strong> → 교회 폴더 → <strong>+ 새로 만들기</strong> → Word 문서 (또는 Excel)<span class="en">New document: office.com → OneDrive → My files → church folder → + New → Word document (or Excel).</span></p>
+        <p class="k"><strong>새 폴더:</strong> 폴더 안에서 오른쪽 클릭 → <strong>새로 만들기 → 폴더</strong>. 같은 분들과 자동 공유됩니다.<span class="en">New folder: right-click inside the folder → New → Folder. It's shared with the same people automatically.</span></p>
+        <p class="k"><strong>PC에 Word가 없으면:</strong> 파일 오른쪽 클릭 → <strong>OneDrive → 온라인에서 보기</strong>로 브라우저에서 고치세요.<span class="en">No Word on your PC? Right-click the file → OneDrive → View online to edit in the browser.</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="menu">
+          <span class="hl"><b>+ 새로 만들기 · New</b></span>
+          <span style="padding-left:20px">📁 폴더 · Folder</span>
+          <span style="padding-left:20px">📘 Word 문서</span>
+          <span style="padding-left:20px">📗 Excel 통합 문서</span>
+        </div>
+      </div>
+    </div>
+    <div class="note"><b>교회 파일을 바탕화면이나 문서 폴더로 옮기지 마세요.</b> 다른 분들이 못 보게 됩니다. 필요하면 복사하세요.<span class="en">Don't move church files to your Desktop or Documents; others lose access. Copy instead.</span></div>
+  </section>
+
+  <section class="step" id="phone">
+    <div class="step-head"><div class="bignum">📷</div><div><h2>휴대폰에서 사진·스캔 올리기<span class="en">Upload photos and scans from your phone</span></h2><p class="meta">담당 폴더에서만 · Only in folders you're in charge of</p></div></div>
+    <div class="sub">
+      <div class="text">
+        <p class="k">OneDrive 앱에서 폴더를 열고 <strong>+</strong> → <strong>업로드</strong> 또는 <strong>사진 찍기</strong><span class="en">In the OneDrive app open the folder → + → Upload or Take photo.</span></p>
+        <p class="k">종이 문서: <strong>+</strong> → <strong>스캔</strong> → PDF로 저장<span class="en">Paper documents: + → Scan → saved as a PDF.</span></p>
+        <p class="k">휴대폰에서 Word·Excel을 고치려면 <strong>Microsoft 365 Copilot</strong> 앱(예전 Office)도 설치하세요.<span class="en">To edit Word/Excel on your phone, also install the Microsoft 365 Copilot app (formerly Office).</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="menu">
+          <span>↑ 업로드 · Upload</span>
+          <span>📷 사진 찍기 · Take photo</span>
+          <span class="hl">📄 스캔 · Scan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="restore">
+    <div class="step-head"><div class="bignum">↶</div><div><h2>되돌리기<span class="en">Undo and restore</span></h2></div></div>
+    <div class="sub no-fig">
+      <div class="text">
+        <p class="k"><strong>이전 버전으로:</strong> 파일 오른쪽 클릭 → <strong>버전 기록</strong> → 원하는 버전의 <strong>⋯ → 복원</strong><span class="en">Older version: right-click the file → Version history → ⋯ next to the version → Restore.</span></p>
+        <p class="k"><strong>실수로 지운 파일:</strong> 교회 폴더 파일은 팀 휴지통으로 갑니다. 93일 안에 IT 담당자에게 연락하시면 복원해 드립니다.<span class="en">Deleted by mistake: church files go to the team's recycle bin. Within 93 days, ask the church IT admin to restore them.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="mac">
+    <div class="step-head"><div class="bignum"></div><div><h2>Mac에서 설정<span class="en">Set up on a Mac</span></h2></div></div>
+    <div class="sub no-fig">
+      <div class="text">
+        <p class="k">App Store에서 <strong>OneDrive</strong> 설치 → 교회 이메일로 로그인 → <strong>다음</strong>만 누르기 → Finder 왼쪽에 <strong>OneDrive - 방주선교교회</strong>가 생깁니다.<span class="en">Install OneDrive from the App Store → sign in with your church email → click Next → it appears in the Finder sidebar.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="personal">
+    <div class="step-head"><div class="bignum">👤</div><div><h2>개인 OneDrive와 함께 쓰기<span class="en">Using it alongside a personal OneDrive</span></h2></div></div>
+    <div class="sub no-fig">
+      <div class="text">
+        <p class="k">작업 표시줄의 구름 아이콘 → ⚙ <strong>설정 → 계정 → 계정 추가</strong> → 교회 이메일. 개인 파일과 교회 파일이 따로 보입니다.<span class="en">Taskbar cloud icon → ⚙ Settings → Account → Add an account → church email. Personal and church files stay separate.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="icons">
+    <div class="step-head"><div class="bignum">☁</div><div><h2>아이콘 의미<span class="en">What the icons mean</span></h2></div></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>아이콘 · Icon</th><th>뜻 · Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>☁ 구름 · cloud</td><td>온라인에만 있음. 열면 내려받습니다 (인터넷 필요)<span class="en">Online only; downloads when opened (needs internet)</span></td></tr>
+          <tr><td>✔ 초록 체크 · green check</td><td>PC에도 저장됨<span class="en">Also saved on this PC</span></td></tr>
+          <tr><td>↻ 화살표 · arrows</td><td>동기화 중<span class="en">Syncing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="contact">
+    <span>도움 · Help: <b>교회 IT 담당자 · Church IT admin</b></span>
+      <span>안내 이메일에 답장하세요 · Reply to the email this guide came with</span>
+  </div>
+  <footer>방주선교교회 · Ark Mission Church, PCA · 2026년 10월</footer>
+</div>
+<script>
+(function () {
+  var boxes = document.querySelectorAll('input[data-step]');
+  function mark(step, on) {
+    var li = document.querySelector('nav.map li[data-step="' + step + '"]');
+    if (li) li.classList.toggle('done', on);
+  }
+  boxes.forEach(function (b) {
+    var key = 'amc-guide-' + b.dataset.step;
+    try { b.checked = localStorage.getItem(key) === '1'; } catch (e) {}
+    mark(b.dataset.step, b.checked);
+    b.addEventListener('change', function () {
+      mark(b.dataset.step, b.checked);
+      try { localStorage.setItem(key, b.checked ? '1' : '0'); } catch (e) {}
+    });
+  });
+  var btn = document.getElementById('copy');
+  if (btn)   btn.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { btn.textContent = '복사됨 · Copied'; }, selectIt);
+    } else { selectIt(); }
+  });
+})();
+</script>
+</body>
+</html>
