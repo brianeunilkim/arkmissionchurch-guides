@@ -1,367 +1,45 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>방주 OneDrive 시작하기</title>
+<title>방주 안내서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<style>
-/* Layout: one calm column of numbered step cards, each step = big number + Korean instruction + English line + a small drawing of the screen */
-:root {
-  --bg: #eef3f6;
-  --paper: #ffffff;
-  --ink: #142433;
-  --muted: #566a7b;
-  --line: #d3dee6;
-  --accent: #0b6e7f;      /* deep teal, the "ark" water */
-  --accent-soft: #dcefF2;
-  --gold: #b7791f;        /* used only for warnings */
-  --gold-soft: #fbf0dc;
-  --ok: #2f7d4f;
-  --ok-soft: #e1f2e7;
-  --no: #b3402e;
-  --no-soft: #f8e3df;
-  --screen: #f7f9fb;
-  --ms-blue: #1f5fbf;
-  --display: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1a22; --paper: #16242f; --ink: #e6eef3; --muted: #9fb2c0; --line: #2a3c49;
-    --accent: #4fb6c6; --accent-soft: #173640; --gold: #e0a64a; --gold-soft: #3a2e17;
-    --ok: #6cc28d; --ok-soft: #173325; --no: #e8836f; --no-soft: #3d201b; --screen: #1c2d39; --ms-blue: #6fa3f0;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f1a22; --paper: #16242f; --ink: #e6eef3; --muted: #9fb2c0; --line: #2a3c49;
-  --accent: #4fb6c6; --accent-soft: #173640; --gold: #e0a64a; --gold-soft: #3a2e17;
-  --ok: #6cc28d; --ok-soft: #173325; --no: #e8836f; --no-soft: #3d201b; --screen: #1c2d39; --ms-blue: #6fa3f0;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.6; }
-.wrap { max-width: 860px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 28px; }
-.wrap > * { min-width: 0; }
-header > * { min-width: 0; }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.25; }
-.en { color: var(--muted); font-size: .86em; display: block; }
-p { margin: 0; }
-
-/* Header */
-header { display: grid; gap: 14px; padding-block: 8px; }
-.eyebrow { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-header h1 { font-size: clamp(30px, 6vw, 44px); }
-header h1 .en { font-size: .55em; margin-top: 4px; font-weight: 500; }
-.lead { max-width: 62ch; }
-.needs { display: flex; flex-wrap: wrap; gap: 10px; }
-.chip { max-width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 6px 14px; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; }
-.chip b { color: var(--accent); flex: none; }
-
-/* Step overview */
-nav.map { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-nav.map ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-nav.map a { display: grid; gap: 2px; text-decoration: none; color: var(--ink); padding: 10px 12px; border-radius: 10px; background: var(--bg); min-height: 100%; }
-nav.map a:hover, nav.map a:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
-nav.map .n { font-family: var(--display); color: var(--accent); font-weight: 700; font-size: 14px; }
-nav.map .t { font-weight: 700; font-size: 16px; line-height: 1.3; }
-nav.map .t .en { font-weight: 400; font-size: 13px; }
-nav.map li.done a { background: var(--ok-soft); }
-nav.map li.done .n::after { content: " ✓"; color: var(--ok); }
-
-/* Step section */
-section.step { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 24px 20px; display: grid; gap: 20px; scroll-margin-top: 16px; }
-.step-head { display: flex; gap: 16px; align-items: flex-start; }
-.bignum { flex: none; width: 56px; height: 56px; border-radius: 16px; background: var(--accent); color: var(--paper); font-family: var(--display); font-weight: 700; font-size: 28px; display: grid; place-items: center; }
-.step-head h2 { font-size: 26px; }
-.step-head h2 .en { font-size: .62em; font-weight: 500; margin-top: 2px; }
-.step-head .meta { font-size: 15px; color: var(--muted); margin-top: 6px; }
-.step-head > div { min-width: 0; }
-
-.sub { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: 20px; align-items: center; padding-top: 18px; border-top: 1px dashed var(--line); }
-.sub:first-of-type { border-top: 0; padding-top: 0; }
-.sub.no-fig { grid-template-columns: 1fr; }
-.sub .text { display: grid; gap: 6px; min-width: 0; }
-.sub .k { font-weight: 500; font-size: 19px; }
-.sub .k strong { color: var(--accent); }
-.sub .no { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--accent); }
-@media (max-width: 640px) { .sub { grid-template-columns: 1fr; } }
-
-.note { border-radius: 12px; padding: 12px 16px; font-size: 16px; background: var(--accent-soft); }
-.note.warn { background: var(--gold-soft); }
-.note b { font-family: var(--display); }
-
-.done-toggle { justify-self: start; display: inline-flex; gap: 10px; align-items: center; font-size: 16px; font-weight: 500; cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; background: var(--bg); color: var(--ink); font-family: var(--body); }
-.done-toggle input { width: 20px; height: 20px; accent-color: var(--ok); margin: 0; }
-.done-toggle:has(input:checked) { background: var(--ok-soft); border-color: var(--ok); }
-
-/* Screen drawings */
-.fig { background: var(--screen); border: 1px solid var(--line); border-radius: 14px; padding: 14px; font-size: 14px; line-height: 1.4; display: grid; gap: 8px; max-width: 100%; }
-.fig .bar { display: flex; gap: 6px; }
-.fig .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
-.fig .box { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
-.fig .btn { background: var(--ms-blue); color: #fff; border-radius: 6px; padding: 6px 12px; justify-self: end; font-weight: 700; }
-.fig .hl { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
-.fig .cap { font-size: 12px; color: var(--muted); text-align: center; }
-.fig .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.fig .pill { border: 1px solid var(--line); background: var(--paper); border-radius: 6px; padding: 4px 8px; }
-.phone { width: 150px; justify-self: center; border: 3px solid var(--ink); border-radius: 22px; padding: 14px 10px; background: var(--paper); display: grid; gap: 8px; text-align: center; }
-.qr { width: 72px; height: 72px; justify-self: center; background:
-  conic-gradient(var(--ink) 25%, transparent 0 50%, var(--ink) 0 75%, transparent 0) 0 0/18px 18px; border: 6px solid var(--paper); outline: 2px solid var(--ink); }
-.bignumber { font-family: var(--display); font-size: 34px; font-weight: 700; letter-spacing: .1em; color: var(--ink); }
-.menu { display: grid; gap: 2px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 6px; box-shadow: 0 4px 12px rgb(0 0 0 / .08); }
-.menu span { padding: 4px 8px; border-radius: 4px; }
-.tree { display: grid; gap: 3px; }
-.tree span { padding: 3px 6px; }
-.tree .in { padding-left: 22px; }
-.tabbar { display: flex; justify-content: space-around; border-top: 1px solid var(--line); padding-top: 6px; font-size: 11px; }
-
-/* Rules */
-.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-@media (max-width: 640px) { .rules { grid-template-columns: 1fr; } }
-.rules ul { list-style: none; margin: 0; padding: 16px; border-radius: 14px; display: grid; gap: 12px; }
-.rules .do { background: var(--ok-soft); }
-.rules .dont { background: var(--no-soft); }
-.rules h3 { font-size: 18px; }
-.rules .do h3 { color: var(--ok); }
-.rules .dont h3 { color: var(--no); }
-.rules li { font-size: 17px; }
-
-/* Help table */
-.tablewrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 16px; }
-th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-family: var(--display); font-size: 14px; color: var(--muted); letter-spacing: .04em; }
-.contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--accent-soft); border-radius: 14px; padding: 14px 16px; }
-.contact code { font-family: var(--body); font-weight: 700; user-select: all; }
-.contact button { font: inherit; font-size: 14px; border: 1px solid var(--accent); color: var(--accent); background: var(--paper); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
-
-footer { font-size: 14px; color: var(--muted); text-align: center; }
-a { color: var(--accent); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-
-@media print {
-  body { background: #fff; font-size: 15px; }
-  nav.map, .done-toggle, .contact button { display: none; }
-  section.step { break-inside: avoid-page; border-color: #ccc; }
-  .wrap { gap: 18px; }
-}
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-</style>
+<link rel="stylesheet" href="assets/site.css">
+<script>try{if(localStorage.getItem("amc-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
-<style>.rules > div{padding:16px;border-radius:14px;display:grid;gap:10px}.rules > div ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;background:none}</style>
 <div class="wrap">
+  <div class="topbar"><button type="button" class="theme-btn" id="theme">🌙 다크 · Dark</button></div>
   <header>
     <div class="eyebrow">방주선교교회 · Ark Mission Church</div>
-    <h1>OneDrive 시작하기<span class="en">Getting started with OneDrive</span></h1>
-    <p class="lead">교회 폴더가 Dropbox에서 OneDrive로 옮겨졌습니다. 아래 4단계를 한 번만 하시면 됩니다.<span class="en">Church folders have moved from Dropbox to OneDrive. Do these 4 steps once.</span></p>
-    <div class="needs" aria-label="준비물 / What you need">
-      <span class="chip"><b>✉</b> 교회 이메일 · Church email</span>
-      <span class="chip"><b>🔑</b> 암호 · Password</span>
-      <span class="chip"><b>📱</b> 휴대폰 · Phone</span>
-      <span class="chip"><b>🔗</b> 이 안내서와 함께 받은 이메일 · The email this guide came with</span>
-    </div>
+    <h1>방주 안내서<span class="en">Ark Mission Church Guides</span></h1>
+    <p class="lead">교회 리더를 위한 단계별 안내서입니다. 교회에서 쓰는 도구를 쉽게 설정하고 사용하실 수 있도록 돕습니다. 아래에서 필요한 주제를 고르세요.<span class="en">Step-by-step guides for church leaders. They help you set up and use the tools our church uses. Pick a topic below.</span></p>
   </header>
 
-  <nav class="map" aria-label="단계 / Steps">
-    <ol>
-      <li data-step="s1"><a href="#s1"><span class="n">1단계 · 10분</span><span class="t">처음 로그인<span class="en">First sign-in</span></span></a></li>
-      <li data-step="s2"><a href="#s2"><span class="n">2단계 · 2분</span><span class="t">교회 폴더 추가<span class="en">Add church folders</span></span></a></li>
-      <li data-step="s3"><a href="#s3"><span class="n">3단계 · 5분</span><span class="t">PC와 휴대폰<span class="en">PC and phone</span></span></a></li>
-      <li data-step="s4"><a href="#s4"><span class="n">4단계</span><span class="t">파일 열기<span class="en">Open files</span></span></a></li>
-      <li><a href="#rules"><span class="n">꼭 기억하세요</span><span class="t">규칙과 도움<span class="en">Rules &amp; help</span></span></a></li>
-    </ol>
-  </nav>
-
-  <!-- STEP 1 -->
-  <section class="step" id="s1">
-    <div class="step-head">
-      <div class="bignum">1</div>
-      <div>
-        <h2>처음 로그인<span class="en">First sign-in</span></h2>
-        <p class="meta">PC 브라우저 + 휴대폰을 옆에 · PC browser with your phone nearby</p>
+  <section class="topics" aria-label="주제 / Topics">
+    <div class="topic">
+      <h2>☁ OneDrive<span class="en">교회 파일 보기·편집 · View and edit church files</span></h2>
+      <div class="links">
+        <a href="onedrive/"><b>시작하기 · Getting started</b><span class="en">처음 한 번 · Do this once</span></a>
+        <a href="onedrive/help.html"><b>도움말 · Help topics</b><span class="en">문제 해결·추가 기능 · Troubleshooting and more</span></a>
       </div>
     </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">1-1</span>
-        <p class="k">휴대폰에 <strong>Microsoft Authenticator</strong> 앱을 설치하세요.<span class="en">Install the Microsoft Authenticator app on your phone.</span></p>
-        <p class="k">PC에서 <strong>office.com</strong> → <strong>로그인</strong> → 교회 이메일과 암호. 새 계정이면 <strong>새 암호를 두 번</strong> 입력합니다.<span class="en">On the PC: office.com → Sign in → church email and password. New account: enter your new password twice.</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="box"><b>방주선교교회</b><br>로그인 · Sign in</div>
-        <div class="box">name@arkmissionchurch.org</div>
-        <span class="btn hl">다음 · Next</span>
-      </div>
-    </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">1-2</span>
-        <p class="k">QR 코드가 나오면 Authenticator에서 <strong>+</strong> → <strong>회사 또는 학교 계정</strong> → <strong>QR 코드 스캔</strong><span class="en">When a QR code appears: in Authenticator tap + → Work or school account → Scan QR code.</span></p>
-        <p class="k">PC에 나온 <strong>숫자</strong>를 휴대폰에 넣고 <strong>예</strong>. 끝!<span class="en">Type the number from the PC into your phone and tap Yes. Done!</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="row" style="justify-content:center;gap:18px">
-          <div class="box" style="display:grid;gap:6px;justify-items:center"><span class="cap">PC</span><div class="qr"></div></div>
-          <div style="font-size:22px">→</div>
-          <div class="phone" style="width:110px"><span class="cap">로그인 승인?</span><div class="pill" style="font-size:18px;font-weight:700">47</div><span class="btn" style="justify-self:center">예 · Yes</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="note warn"><b>새 암호는 적어서 안전한 곳에 보관하세요.</b><span class="en">Write your new password down somewhere safe.</span></div>
-    <label class="done-toggle"><input type="checkbox" id="done-s1" data-step="s1"> 1단계 완료 · Step 1 done</label>
+    <div class="topic soon"><p>더 많은 안내서가 추가될 예정입니다.<span class="en">More guides will be added here.</span></p></div>
   </section>
 
-  <!-- STEP 2 -->
-  <section class="step" id="s2">
-    <div class="step-head">
-      <div class="bignum">2</div>
-      <div>
-        <h2>교회 폴더를 내 OneDrive에 추가<span class="en">Add the church folders to your OneDrive</span></h2>
-        <p class="meta">한 번만 하면 PC와 휴대폰에 자동으로 나타납니다 · Once, and they appear on your PC and phone</p>
-      </div>
-    </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">2-1</span>
-        <p class="k">이 안내서와 함께 받으신 <strong>이메일</strong>에서 <strong>AMC 리더십</strong> 링크를 클릭하세요. (당회 분들은 <strong>당회</strong> 링크도)<span class="en">Click the AMC 리더십 link in the email this guide came with. (당회 members: the 당회 link too.)</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="box"><b>교회 폴더 링크 · Church folder links</b><br><span style="color:var(--ms-blue);text-decoration:underline" class="hl">📁 AMC 리더십 · 문서</span><br><span style="color:var(--ms-blue);text-decoration:underline">📁 당회 · 문서</span></div>
-      </div>
-    </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">2-2</span>
-        <p class="k">열리면 위쪽 메뉴의 <strong>내 파일에 바로 가기 추가</strong>를 누르세요.<span class="en">When it opens, click "Add shortcut to My files" in the top menu.</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="row"><span class="pill hl"><b>⤴ 내 파일에 바로 가기 추가</b></span><span class="pill">⋯</span></div>
-        <div class="box">📁 공동의회 · 📁 제직회 · 📁 교육개발원 …</div>
-        <span class="cap">Add shortcut to My files</span>
-      </div>
-    </div>
-    <label class="done-toggle"><input type="checkbox" id="done-s2" data-step="s2"> 2단계 완료 · Step 2 done</label>
-  </section>
+  <div class="points">
+    <div><b>한글 · English</b>모든 안내가 두 언어로 되어 있습니다.<span class="en">Every guide is in both languages.</span></div>
+    <div><b>어디서나 · Any device</b>휴대폰, 태블릿, PC에서 볼 수 있습니다.<span class="en">Read it on a phone, tablet or PC.</span></div>
+    <div><b>필요한 것만 · Just what you need</b>처음 설정은 짧게, 나머지는 도움말에.<span class="en">Short first-time setup; everything else in help topics.</span></div>
+  </div>
 
-  <!-- STEP 3 -->
-  <section class="step" id="s3">
-    <div class="step-head">
-      <div class="bignum">3</div>
-      <div>
-        <h2>PC와 휴대폰에서 보기<span class="en">See them on your PC and phone</span></h2>
-      </div>
-    </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">PC · Windows</span>
-        <p class="k"><strong>시작</strong> → <strong>OneDrive</strong> 입력 → 열기 → 교회 이메일로 로그인 → <strong>다음</strong>만 누르세요.<span class="en">Start → type OneDrive → open → sign in with your church email → keep clicking Next.</span></p>
-        <p class="k"><strong>파일 탐색기</strong> 왼쪽 <strong>OneDrive - 방주선교교회</strong>에 교회 폴더가 있습니다.<span class="en">The church folders are under "OneDrive - (church)" on the left of File Explorer.</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="tree box">
-          <span>🏠 홈</span>
-          <span class="hl"><b>☁ OneDrive - 방주선교교회</b></span>
-          <span class="in">📁↗ AMC 리더십</span>
-          <span>💻 내 PC</span>
-        </div>
-      </div>
-    </div>
-    <div class="sub">
-      <div class="text">
-        <span class="no">휴대폰 · Phone</span>
-        <p class="k"><strong>Microsoft OneDrive</strong> 앱 설치 → 교회 이메일로 로그인 → 아래쪽 <strong>파일</strong>.<span class="en">Install Microsoft OneDrive → sign in with your church email → tap Files at the bottom.</span></p>
-      </div>
-      <div class="fig" aria-hidden="true">
-        <div class="phone" style="width:170px;text-align:left">
-          <b style="text-align:center">내 파일 · My files</b>
-          <div class="pill">📁↗ AMC 리더십</div>
-          <div class="tabbar"><span>홈</span><span class="hl" style="padding:0 4px"><b>파일</b></span><span>사진</span><span>공유</span></div>
-        </div>
-      </div>
-    </div>
-    <label class="done-toggle"><input type="checkbox" id="done-s3" data-step="s3"> 3단계 완료 · Step 3 done</label>
-  </section>
-
-  <!-- STEP 4 -->
-  <section class="step" id="s4">
-    <div class="step-head">
-      <div class="bignum">4</div>
-      <div>
-        <h2>파일 열기<span class="en">Open files</span></h2>
-        <p class="meta">모든 폴더를 볼 수 있습니다 · You can view every folder</p>
-      </div>
-    </div>
-    <div class="sub no-fig">
-      <div class="text">
-        <p class="k">폴더를 열고 파일을 <strong>클릭</strong>하면 열립니다.<span class="en">Open a folder and click a file to open it.</span></p>
-        <p class="k"><strong>담당 폴더</strong>(편집 권한이 있는 폴더)에서는 파일을 만들고, 고치고, 지울 수 있습니다. 해당 폴더 <strong>안에</strong> 저장하면 팀 전원이 자동으로 봅니다. 자동 저장되니 저장 버튼은 필요 없습니다.<span class="en">In folders you're in charge of, you can create, edit and delete. Save inside that folder and the whole team sees it automatically. It saves on its own.</span></p>
-      </div>
-    </div>
-    <label class="done-toggle"><input type="checkbox" id="done-s4" data-step="s4"> 4단계 완료 · Step 4 done</label>
-  </section>
-
-  <!-- RULES -->
-  <section class="step" id="rules">
-    <div class="step-head">
-      <div class="bignum">★</div>
-      <div><h2>꼭 기억하세요<span class="en">Remember</span></h2></div>
-    </div>
-    <div class="rules">
-      <div class="do"><h3>이렇게 하세요 · Do</h3><ul>
-        <li>✓ <b>해당 폴더 안에 저장</b><span class="en">Save inside the right folder</span></li>
-        <li>✓ <b>같은 파일을 함께 고치기</b><span class="en">Edit the same file together, no copies</span></li>
-      </ul></div>
-      <div class="dont"><h3>하지 마세요 · Don't</h3><ul>
-        <li>✕ <b>"공유" 버튼</b> (필요 없습니다)<span class="en">The Share button; it isn't needed</span></li>
-        <li>✕ <b>암호나 숫자 알려주기</b><span class="en">Share your password or sign-in number</span></li>
-      </ul></div>
-    </div>
-    <div class="contact">
-      <span>막히면 언제든지 · Stuck? Ask: <b>교회 IT 담당자 · Church IT admin</b></span>
-      <span>안내 이메일에 답장하세요 · Reply to the email this guide came with</span>
-    </div>
-  </section>
-
-  <p style="text-align:center;font-size:16px">다른 기능이나 문제가 있으면: <a href="help.html">OneDrive 도움말</a><span class="en">More features and troubleshooting: OneDrive help topics</span></p>
-  <footer>방주선교교회 · Ark Mission Church, PCA · 2026년 10월</footer>
+  <div class="contact"><span>막히면 언제든지 · Stuck? Ask: <b>교회 IT 담당자 · Church IT admin</b></span></div>
+  <footer>방주선교교회 · Ark Mission Church, PCA</footer>
 </div>
-
-<script>
-(function () {
-  var boxes = document.querySelectorAll('input[data-step]');
-  function mark(step, on) {
-    var li = document.querySelector('nav.map li[data-step="' + step + '"]');
-    if (li) li.classList.toggle('done', on);
-  }
-  boxes.forEach(function (b) {
-    var key = 'amc-guide-' + b.dataset.step;
-    try { b.checked = localStorage.getItem(key) === '1'; } catch (e) {}
-    mark(b.dataset.step, b.checked);
-    b.addEventListener('change', function () {
-      mark(b.dataset.step, b.checked);
-      try { localStorage.setItem(key, b.checked ? '1' : '0'); } catch (e) {}
-    });
-  });
-  var btn = document.getElementById('copy');
-  if (btn)   btn.addEventListener('click', function () {
-    var text = document.getElementById('email').textContent;
-    function selectIt() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { btn.textContent = '복사됨 · Copied'; }, selectIt);
-    } else { selectIt(); }
-  });
-})();
-</script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

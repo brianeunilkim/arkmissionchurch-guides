@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>방주 OneDrive 시작하기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>try{if(localStorage.getItem("amc-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<style>.rules > div{padding:16px;border-radius:14px;display:grid;gap:10px}.rules > div ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;background:none}</style>
+<div class="wrap">
+  <div class="topbar"><a href="../">← 안내서 홈 · Guides home</a><button type="button" class="theme-btn" id="theme">🌙 다크 · Dark</button></div>
+  <header>
+    <div class="eyebrow">방주선교교회 · Ark Mission Church</div>
+    <h1>OneDrive 시작하기<span class="en">Getting started with OneDrive</span></h1>
+    <p class="lead">교회 폴더가 Dropbox에서 OneDrive로 옮겨졌습니다. 아래 4단계를 한 번만 하시면 됩니다.<span class="en">Church folders have moved from Dropbox to OneDrive. Do these 4 steps once.</span></p>
+    <div class="needs" aria-label="준비물 / What you need">
+      <span class="chip"><b>✉</b> 교회 이메일 · Church email</span>
+      <span class="chip"><b>🔑</b> 암호 · Password</span>
+      <span class="chip"><b>📱</b> 휴대폰 · Phone</span>
+      <span class="chip"><b>🔗</b> 이 안내서와 함께 받은 이메일 · The email this guide came with</span>
+    </div>
+  </header>
+
+  <nav class="map" aria-label="단계 / Steps">
+    <ol>
+      <li data-step="s1"><a href="#s1"><span class="n">1단계 · 10분</span><span class="t">처음 로그인<span class="en">First sign-in</span></span></a></li>
+      <li data-step="s2"><a href="#s2"><span class="n">2단계 · 2분</span><span class="t">교회 폴더 추가<span class="en">Add church folders</span></span></a></li>
+      <li data-step="s3"><a href="#s3"><span class="n">3단계 · 5분</span><span class="t">PC와 휴대폰<span class="en">PC and phone</span></span></a></li>
+      <li data-step="s4"><a href="#s4"><span class="n">4단계</span><span class="t">파일 열기<span class="en">Open files</span></span></a></li>
+      <li><a href="#rules"><span class="n">꼭 기억하세요</span><span class="t">규칙과 도움<span class="en">Rules &amp; help</span></span></a></li>
+    </ol>
+  </nav>
+
+  <!-- STEP 1 -->
+  <section class="step" id="s1">
+    <div class="step-head">
+      <div class="bignum">1</div>
+      <div>
+        <h2>처음 로그인<span class="en">First sign-in</span></h2>
+        <p class="meta">PC 브라우저 + 휴대폰을 옆에 · PC browser with your phone nearby</p>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">1-1</span>
+        <p class="k">휴대폰에 <strong>Microsoft Authenticator</strong> 앱을 설치하세요.<span class="en">Install the Microsoft Authenticator app on your phone.</span></p>
+        <p class="k">PC에서 <strong>office.com</strong> → <strong>로그인</strong> → 교회 이메일과 암호. 새 계정이면 <strong>새 암호를 두 번</strong> 입력합니다.<span class="en">On the PC: office.com → Sign in → church email and password. New account: enter your new password twice.</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="box"><b>방주선교교회</b><br>로그인 · Sign in</div>
+        <div class="box">name@arkmissionchurch.org</div>
+        <span class="btn hl">다음 · Next</span>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">1-2</span>
+        <p class="k">QR 코드가 나오면 Authenticator에서 <strong>+</strong> → <strong>회사 또는 학교 계정</strong> → <strong>QR 코드 스캔</strong><span class="en">When a QR code appears: in Authenticator tap + → Work or school account → Scan QR code.</span></p>
+        <p class="k">PC에 나온 <strong>숫자</strong>를 휴대폰에 넣고 <strong>예</strong>. 끝!<span class="en">Type the number from the PC into your phone and tap Yes. Done!</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="row" style="justify-content:center;gap:18px">
+          <div class="box" style="display:grid;gap:6px;justify-items:center"><span class="cap">PC</span><div class="qr"></div></div>
+          <div style="font-size:22px">→</div>
+          <div class="phone" style="width:110px"><span class="cap">로그인 승인?</span><div class="pill" style="font-size:18px;font-weight:700">47</div><span class="btn" style="justify-self:center">예 · Yes</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="note warn"><b>새 암호는 적어서 안전한 곳에 보관하세요.</b><span class="en">Write your new password down somewhere safe.</span></div>
+    <label class="done-toggle"><input type="checkbox" id="done-s1" data-step="s1"> 1단계 완료 · Step 1 done</label>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="s2">
+    <div class="step-head">
+      <div class="bignum">2</div>
+      <div>
+        <h2>교회 폴더를 내 OneDrive에 추가<span class="en">Add the church folders to your OneDrive</span></h2>
+        <p class="meta">한 번만 하면 PC와 휴대폰에 자동으로 나타납니다 · Once, and they appear on your PC and phone</p>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">2-1</span>
+        <p class="k">이 안내서와 함께 받으신 <strong>이메일</strong>에서 <strong>AMC 리더십</strong> 링크를 클릭하세요. (당회 분들은 <strong>당회</strong> 링크도)<span class="en">Click the AMC 리더십 link in the email this guide came with. (당회 members: the 당회 link too.)</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="box"><b>교회 폴더 링크 · Church folder links</b><br><span style="color:var(--ms-blue);text-decoration:underline" class="hl">📁 AMC 리더십 · 문서</span><br><span style="color:var(--ms-blue);text-decoration:underline">📁 당회 · 문서</span></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">2-2</span>
+        <p class="k">열리면 위쪽 메뉴의 <strong>내 파일에 바로 가기 추가</strong>를 누르세요.<span class="en">When it opens, click "Add shortcut to My files" in the top menu.</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="row"><span class="pill hl"><b>⤴ 내 파일에 바로 가기 추가</b></span><span class="pill">⋯</span></div>
+        <div class="box">📁 공동의회 · 📁 제직회 · 📁 교육개발원 …</div>
+        <span class="cap">Add shortcut to My files</span>
+      </div>
+    </div>
+    <label class="done-toggle"><input type="checkbox" id="done-s2" data-step="s2"> 2단계 완료 · Step 2 done</label>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="s3">
+    <div class="step-head">
+      <div class="bignum">3</div>
+      <div>
+        <h2>PC와 휴대폰에서 보기<span class="en">See them on your PC and phone</span></h2>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">PC · Windows</span>
+        <p class="k"><strong>시작</strong> → <strong>OneDrive</strong> 입력 → 열기 → 교회 이메일로 로그인 → <strong>다음</strong>만 누르세요.<span class="en">Start → type OneDrive → open → sign in with your church email → keep clicking Next.</span></p>
+        <p class="k"><strong>파일 탐색기</strong> 왼쪽 <strong>OneDrive - 방주선교교회</strong>에 교회 폴더가 있습니다.<span class="en">The church folders are under "OneDrive - (church)" on the left of File Explorer.</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="tree box">
+          <span>🏠 홈</span>
+          <span class="hl"><b>☁ OneDrive - 방주선교교회</b></span>
+          <span class="in">📁↗ AMC 리더십</span>
+          <span>💻 내 PC</span>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="text">
+        <span class="no">휴대폰 · Phone</span>
+        <p class="k"><strong>Microsoft OneDrive</strong> 앱 설치 → 교회 이메일로 로그인 → 아래쪽 <strong>파일</strong>.<span class="en">Install Microsoft OneDrive → sign in with your church email → tap Files at the bottom.</span></p>
+      </div>
+      <div class="fig" aria-hidden="true">
+        <div class="phone" style="width:170px;text-align:left">
+          <b style="text-align:center">내 파일 · My files</b>
+          <div class="pill">📁↗ AMC 리더십</div>
+          <div class="tabbar"><span>홈</span><span class="hl" style="padding:0 4px"><b>파일</b></span><span>사진</span><span>공유</span></div>
+        </div>
+      </div>
+    </div>
+    <label class="done-toggle"><input type="checkbox" id="done-s3" data-step="s3"> 3단계 완료 · Step 3 done</label>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="s4">
+    <div class="step-head">
+      <div class="bignum">4</div>
+      <div>
+        <h2>파일 열기<span class="en">Open files</span></h2>
+        <p class="meta">모든 폴더를 볼 수 있습니다 · You can view every folder</p>
+      </div>
+    </div>
+    <div class="sub no-fig">
+      <div class="text">
+        <p class="k">폴더를 열고 파일을 <strong>클릭</strong>하면 열립니다.<span class="en">Open a folder and click a file to open it.</span></p>
+        <p class="k"><strong>담당 폴더</strong>(편집 권한이 있는 폴더)에서는 파일을 만들고, 고치고, 지울 수 있습니다. 해당 폴더 <strong>안에</strong> 저장하면 팀 전원이 자동으로 봅니다. 자동 저장되니 저장 버튼은 필요 없습니다.<span class="en">In folders you're in charge of, you can create, edit and delete. Save inside that folder and the whole team sees it automatically. It saves on its own.</span></p>
+      </div>
+    </div>
+    <label class="done-toggle"><input type="checkbox" id="done-s4" data-step="s4"> 4단계 완료 · Step 4 done</label>
+  </section>
+
+  <!-- RULES -->
+  <section class="step" id="rules">
+    <div class="step-head">
+      <div class="bignum">★</div>
+      <div><h2>꼭 기억하세요<span class="en">Remember</span></h2></div>
+    </div>
+    <div class="rules">
+      <div class="do"><h3>이렇게 하세요 · Do</h3><ul>
+        <li>✓ <b>해당 폴더 안에 저장</b><span class="en">Save inside the right folder</span></li>
+        <li>✓ <b>같은 파일을 함께 고치기</b><span class="en">Edit the same file together, no copies</span></li>
+      </ul></div>
+      <div class="dont"><h3>하지 마세요 · Don't</h3><ul>
+        <li>✕ <b>"공유" 버튼</b> (필요 없습니다)<span class="en">The Share button; it isn't needed</span></li>
+        <li>✕ <b>암호나 숫자 알려주기</b><span class="en">Share your password or sign-in number</span></li>
+      </ul></div>
+    </div>
+    <div class="contact">
+      <span>막히면 언제든지 · Stuck? Ask: <b>교회 IT 담당자 · Church IT admin</b></span>
+      <span>안내 이메일에 답장하세요 · Reply to the email this guide came with</span>
+    </div>
+  </section>
+
+  <p style="text-align:center;font-size:16px">다른 기능이나 문제가 있으면: <a href="help.html">OneDrive 도움말</a><span class="en">More features and troubleshooting: OneDrive help topics</span></p>
+  <footer>방주선교교회 · Ark Mission Church, PCA · 2026년 10월</footer>
+</div>
+
+<script>
+(function () {
+  var boxes = document.querySelectorAll('input[data-step]');
+  function mark(step, on) {
+    var li = document.querySelector('nav.map li[data-step="' + step + '"]');
+    if (li) li.classList.toggle('done', on);
+  }
+  boxes.forEach(function (b) {
+    var key = 'amc-guide-' + b.dataset.step;
+    try { b.checked = localStorage.getItem(key) === '1'; } catch (e) {}
+    mark(b.dataset.step, b.checked);
+    b.addEventListener('change', function () {
+      mark(b.dataset.step, b.checked);
+      try { localStorage.setItem(key, b.checked ? '1' : '0'); } catch (e) {}
+    });
+  });
+  var btn = document.getElementById('copy');
+  if (btn)   btn.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { btn.textContent = '복사됨 · Copied'; }, selectIt);
+    } else { selectIt(); }
+  });
+})();
+</script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>
