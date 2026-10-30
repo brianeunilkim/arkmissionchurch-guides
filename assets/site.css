@@ -36,7 +36,7 @@ p { margin: 0; }
 /* Header */
 header { display: grid; gap: 14px; padding-block: 8px; }
 .eyebrow { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-header h1 { font-size: clamp(30px, 6vw, 44px); }
+header h1 { font-size: clamp(30px, 6vw, 44px); word-break: keep-all; }
 header h1 .en { font-size: .55em; margin-top: 4px; font-weight: 500; }
 .lead { max-width: 62ch; }
 .needs { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -75,6 +75,7 @@ section.step { background: var(--paper); border: 1px solid var(--line); border-r
 .note { border-radius: 12px; padding: 12px 16px; font-size: 16px; background: var(--accent-soft); }
 .note.warn { background: var(--gold-soft); }
 .note b { font-family: var(--display); }
+.note p { margin: 10px 0 0; }
 
 .done-toggle { justify-self: start; display: inline-flex; gap: 10px; align-items: center; font-size: 16px; font-weight: 500; cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; background: var(--bg); color: var(--ink); font-family: var(--body); }
 .done-toggle input { width: 20px; height: 20px; accent-color: var(--ok); margin: 0; }
