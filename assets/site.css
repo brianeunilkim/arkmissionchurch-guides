@@ -180,3 +180,19 @@ a { color: var(--accent); }
 .must b { font-family: var(--display); font-size: 19px; }
 .must p { margin: 4px 0 0; }
 .fig .addr { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 700; }
+
+/* Quick start page: fewer words, bigger type */
+.quick .sub .k { font-size: 21px; }
+.quick .step-head h2 { font-size: 28px; }
+.finish { background: var(--ok-soft); border: 2px solid var(--ok); border-radius: 20px; padding: 24px 20px; display: grid; gap: 16px; }
+.finish-head { font-family: var(--display); font-weight: 700; font-size: 26px; }
+.finish-head .en { font-size: .62em; font-weight: 500; }
+.finish .rules ul { background: var(--paper); }
+.more { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; gap: 10px; }
+.more b { font-family: var(--display); }
+.more .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.more .links a { display: inline-grid; gap: 2px; text-decoration: none; color: var(--ink); background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; min-width: 200px; }
+.more .links a b { color: var(--accent); }
+.more .links a:hover { border-color: var(--accent); }
+.qs-banner { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; background: var(--ok-soft); border: 1px solid var(--ok); border-radius: 14px; padding: 12px 16px; font-size: 16px; }
+.qs-banner a { font-weight: 700; color: var(--ok); }
