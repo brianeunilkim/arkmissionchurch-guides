@@ -181,7 +181,7 @@ a { color: var(--accent); }
 .must p { margin: 4px 0 0; }
 .fig .addr { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 700; }
 
-/* Quick start page: fewer words, bigger type */
+/* Setup guide page: fewer words, bigger type */
 .quick .sub .k { font-size: 21px; }
 .quick .step-head h2 { font-size: 28px; }
 .finish { background: var(--ok-soft); border: 2px solid var(--ok); border-radius: 20px; padding: 24px 20px; display: grid; gap: 16px; }
@@ -196,3 +196,17 @@ a { color: var(--accent); }
 .more .links a:hover { border-color: var(--accent); }
 .detail-link { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; font-size: 15px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 14px; }
 .detail-link a { font-weight: 700; white-space: nowrap; }
+/* Where each step happens */
+.where { display: inline-flex; gap: 10px; align-items: center; margin-top: 8px; background: var(--accent-soft); border: 2px solid var(--accent); border-radius: 12px; padding: 6px 14px 6px 10px; font-size: 16px; max-width: 100%; }
+.where .ico { font-size: 26px; line-height: 1; flex: none; }
+.where b { color: var(--accent); font-family: var(--display); }
+.where .en { font-size: 13px; }
+.where-map { display: grid; gap: 12px; }
+.where-map .map-head { font-family: var(--display); font-weight: 700; font-size: 21px; }
+.where-map .map-head .en { font-size: .7em; font-weight: 500; }
+.where-map ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 640px) { .where-map ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.where-map li.opt a { background: transparent; border: 1px dashed var(--line); }
+.where-map .map-note { font-size: 15px; }
+.must-where { border-left: 4px solid var(--gold); background: var(--gold-soft); border-radius: 8px; padding: 8px 12px; font-size: 16px; }
+.where-map .t, .where b { word-break: keep-all; }
